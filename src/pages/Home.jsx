@@ -33,7 +33,7 @@ const MODELS = [
     badge: 'Adventure',
     seats: 4,
     category: '4-Seat',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    image: '/images/timber-blue.jpg',
     specs: {
       Seats: '4 (2+2)',
       Motor: '48V 5KW AC',
@@ -57,7 +57,7 @@ const MODELS = [
     badge: 'Bold',
     seats: 4,
     category: '4-Seat',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    image: '/images/skoll-red.jpg',
     specs: {
       Seats: '4 (2+2)',
       Motor: '48V 5KW AC',
@@ -81,7 +81,7 @@ const MODELS = [
     badge: 'Elegant',
     seats: 4,
     category: '4-Seat',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    image: '/images/luna-white.jpg',
     specs: {
       Seats: '4 (2+2)',
       Motor: '48V 5KW AC',
@@ -105,7 +105,7 @@ const MODELS = [
     badge: 'Refined',
     seats: 4,
     category: '4-Seat',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    image: '/images/sage-blue.jpg',
     specs: {
       Seats: '4 (2+2)',
       Motor: '48V 5KW AC',
@@ -383,19 +383,23 @@ export default function Home() {
                 className="group flex flex-col overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-black/50"
                 style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.06)' }}>
 
-                {/* Image placeholder */}
+                {/* Image */}
                 <div className="relative aspect-[16/10] overflow-hidden" style={{ background: '#0d0d0d' }}>
-                  <div className="w-full h-full flex items-center justify-center"
-                       style={{ background: 'linear-gradient(135deg, #111 0%, #1a1a1a 50%, #111 100%)' }}>
-                    <div className="text-center">
-                      <span className="text-4xl font-extrabold uppercase tracking-tight block" style={{ color: 'rgba(255,255,255,0.06)' }}>
-                        {model.name}
-                      </span>
-                      <span className="text-[11px] uppercase tracking-[0.3em] mt-2 block" style={{ color: 'rgba(255,255,255,0.15)' }}>
-                        Image Coming Soon
-                      </span>
+                  {model.image.startsWith('/images/') ? (
+                    <img src={model.image} alt={model.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center"
+                         style={{ background: 'linear-gradient(135deg, #111 0%, #1a1a1a 50%, #111 100%)' }}>
+                      <div className="text-center">
+                        <span className="text-4xl font-extrabold uppercase tracking-tight block" style={{ color: 'rgba(255,255,255,0.06)' }}>
+                          {model.name}
+                        </span>
+                        <span className="text-[11px] uppercase tracking-[0.3em] mt-2 block" style={{ color: 'rgba(255,255,255,0.15)' }}>
+                          Image Coming Soon
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                   {model.badge && (
                     <div className="absolute top-3 left-3 text-[11px] font-bold uppercase tracking-[0.2em] px-3 py-1"
                          style={{ background: gold, color: bg }}>
