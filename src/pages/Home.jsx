@@ -4,36 +4,42 @@ import { Link } from 'react-router-dom'
 /* ── 7 Cart Models ── */
 const MODELS = [
   {
-    name: 'Shadow',
-    type: '2-Seat Compact',
-    badge: 'Nimble',
-    seats: 2,
-    category: '2-Seat',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    name: 'Purebred',
+    sku: 'PB-L540',
+    type: '4-Seat Forward · Non-Lifted',
+    badge: 'Classic',
+    seats: 4,
+    category: '4-Seat',
+    image: '/images/stallion-white.png',
+    colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
+    battery: ['48V 105AH', '48V 150AH'],
     specs: {
-      Seats: '2',
+      Seats: '4 Forward-Facing',
       Motor: '48V 5KW AC',
       Range: 'Up to 40 mi',
       Display: '10.1" Touchscreen',
+      Suspension: 'Standard',
       Brakes: 'Hydraulic Disc',
-      Lights: 'Full LED',
     },
     features: [
       'Apple CarPlay & Android Auto',
       'Backup Camera',
       'LED Headlights & Taillights',
+      'All Forward-Facing Seats',
       'Synthetic Leather Seats',
       'USB Charging Ports',
-      'Carbon Fiber Dashboard',
     ],
   },
   {
-    name: 'Timber',
-    type: '4-Seat Forward-Facing Lifted',
+    name: 'Purebred Lifted',
+    sku: 'PB-H540',
+    type: '4-Seat Forward · Lifted',
     badge: 'Adventure',
     seats: 4,
     category: '4-Seat',
-    image: '/images/timber-blue.jpg',
+    image: '/images/stallion-blue.png',
+    colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
+    battery: ['48V 105AH', '48V 150AH'],
     specs: {
       Seats: '4 Forward-Facing',
       Motor: '48V 5KW AC',
@@ -47,89 +53,47 @@ const MODELS = [
       'Lifted Suspension',
       'All-Terrain Tires',
       'All Forward-Facing Seats',
+      'Backup Camera',
       'In-Seat Storage',
-      'Backup Camera',
     ],
   },
   {
-    name: 'Skoll',
-    type: '4-Seat 2+2 Lifted',
-    badge: 'Bold',
-    seats: 4,
-    category: '4-Seat',
-    image: 'placeholder',
-    specs: {
-      Seats: '2 Front + 2 Rear',
-      Motor: '48V 5KW AC',
-      Range: 'Up to 40 mi',
-      Display: '10.1" Touchscreen',
-      Suspension: 'Lifted',
-      Brakes: 'Hydraulic Disc',
-    },
-    features: [
-      'Apple CarPlay & Android Auto',
-      'Lifted Suspension',
-      'Premium Alloy Wheels',
-      'Rear Flip Seat',
-      'LED Light Bar',
-      'Carbon Fiber Accents',
-    ],
-  },
-  {
-    name: 'Luna',
-    type: '4-Seat Forward-Facing Lowered',
-    badge: 'Elegant',
-    seats: 4,
-    category: '4-Seat',
-    image: '/images/luna-white.jpg',
-    specs: {
-      Seats: '4 Forward-Facing',
-      Motor: '48V 5KW AC',
-      Range: 'Up to 40 mi',
-      Display: '10.1" Touchscreen',
-      Suspension: 'Lowered',
-      Brakes: 'Hydraulic Disc',
-    },
-    features: [
-      'Apple CarPlay & Android Auto',
-      'Lowered Profile',
-      'Premium Synthetic Leather',
-      'All Forward-Facing Seats',
-      'Ambient Lighting',
-      'Backup Camera',
-    ],
-  },
-  {
-    name: 'Sage',
-    type: '4-Seat 2+2 Lowered',
-    badge: 'Refined',
-    seats: 4,
-    category: '4-Seat',
-    image: 'placeholder',
-    specs: {
-      Seats: '2 Front + 2 Rear',
-      Motor: '48V 5KW AC',
-      Range: 'Up to 40 mi',
-      Display: '10.1" Touchscreen',
-      Suspension: 'Lowered',
-      Brakes: 'Hydraulic Disc',
-    },
-    features: [
-      'Apple CarPlay & Android Auto',
-      'Lowered Profile',
-      'Two-Tone Interior',
-      'Rear Flip Seat',
-      'Premium Sound System',
-      'USB-C Fast Charging',
-    ],
-  },
-  {
-    name: 'Prowler',
-    type: '6-Seat Lifted',
+    name: 'Stallion',
+    sku: 'CLYD-6-NLFT-RB',
+    type: '6-Seat · Non-Lifted',
     badge: 'Flagship',
     seats: 6,
     category: '6-Seat',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    image: '/images/stallion-red.png',
+    colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
+    battery: ['48V 105AH', '48V 150AH'],
+    specs: {
+      Seats: '6',
+      Motor: '48V 5KW AC',
+      Range: 'Up to 40 mi',
+      Display: '10.1" Touchscreen',
+      Suspension: 'Standard',
+      Brakes: 'Hydraulic Disc',
+    },
+    features: [
+      'Apple CarPlay & Android Auto',
+      '6-Passenger Seating',
+      'Extended Roof',
+      'Backup Camera',
+      'Full LED Lighting Package',
+      'Premium Synthetic Leather',
+    ],
+  },
+  {
+    name: 'Stallion Lifted',
+    sku: 'CLYD-6-LFT-RB',
+    type: '6-Seat · Lifted',
+    badge: 'Beast',
+    seats: 6,
+    category: '6-Seat',
+    image: '/images/stallion-black.png',
+    colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
+    battery: ['48V 105AH', '48V 150AH'],
     specs: {
       Seats: '6',
       Motor: '48V 5KW AC',
@@ -148,27 +112,84 @@ const MODELS = [
     ],
   },
   {
-    name: 'Willow',
-    type: '6-Seat Lowered',
-    badge: 'Grand Touring',
-    seats: 6,
-    category: '6-Seat',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    name: 'Colt',
+    sku: 'STL-4-SEAT-NLFT',
+    type: '4-Seat · Non-Lifted',
+    badge: 'Versatile',
+    seats: 4,
+    category: '4-Seat',
+    image: '/images/stallion-orange.png',
+    colors: ['White Gloss', 'Timeless Grey', 'Bright Blue', 'Black Gloss', 'Rich Green', 'Ferrari Red', 'Dark Blue', 'Deep Orange', 'Purple', 'Bright Teal', 'Candy Apple'],
+    battery: ['48V 105AH', '48V 150AH'],
     specs: {
-      Seats: '6',
+      Seats: '4',
       Motor: '48V 5KW AC',
       Range: 'Up to 40 mi',
       Display: '10.1" Touchscreen',
-      Suspension: 'Lowered',
+      Suspension: 'Standard',
       Brakes: 'Hydraulic Disc',
     },
     features: [
       'Apple CarPlay & Android Auto',
-      'Lowered Profile',
-      '6-Passenger Seating',
-      'Extended Roof',
-      'Premium Synthetic Leather',
-      'Ambient Interior Lighting',
+      '11 Color Options',
+      'Backup Camera',
+      'Synthetic Leather Seats',
+      'LED Headlights & Taillights',
+      'USB Charging Ports',
+    ],
+  },
+  {
+    name: 'Colt Lifted',
+    sku: 'STL-4-SEAT-LFT',
+    type: '4-Seat · Lifted',
+    badge: 'Rugged',
+    seats: 4,
+    category: '4-Seat',
+    image: '/images/stallion-teal.png',
+    colors: ['White Gloss', 'Timeless Grey', 'Bright Blue', 'Black Gloss', 'Rich Green', 'Ferrari Red', 'Dark Blue', 'Deep Orange', 'Purple', 'Bright Teal', 'Candy Apple'],
+    battery: ['48V 105AH', '48V 150AH'],
+    specs: {
+      Seats: '4',
+      Motor: '48V 5KW AC',
+      Range: 'Up to 40 mi',
+      Display: '10.1" Touchscreen',
+      Suspension: 'Lifted',
+      Brakes: 'Hydraulic Disc',
+    },
+    features: [
+      'Apple CarPlay & Android Auto',
+      'Lifted Suspension',
+      '11 Color Options',
+      'All-Terrain Tires',
+      'Backup Camera',
+      'LED Light Bar',
+    ],
+  },
+  {
+    name: 'Mare',
+    sku: 'MARE-WHITE',
+    type: 'Golf Cart',
+    badge: 'Pure',
+    seats: 4,
+    category: 'Golf',
+    image: '/images/stallion-white.png',
+    colors: ['White'],
+    battery: ['48V 105AH', '48V 150AH'],
+    specs: {
+      Seats: '4',
+      Motor: '48V 5KW AC',
+      Range: 'Up to 40 mi',
+      Display: '10.1" Touchscreen',
+      Suspension: 'Standard',
+      Brakes: 'Hydraulic Disc',
+    },
+    features: [
+      'Apple CarPlay & Android Auto',
+      'Classic Golf Cart Design',
+      'Backup Camera',
+      'LED Headlights & Taillights',
+      'Synthetic Leather Seats',
+      'USB Charging Ports',
     ],
   },
 ]
@@ -212,7 +233,7 @@ const PILLARS = [
   },
 ]
 
-const CATEGORIES = ['All', '2-Seat', '4-Seat', '6-Seat']
+const CATEGORIES = ['All', '4-Seat', '6-Seat', 'Golf']
 
 export default function Home() {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '', model: '' })
@@ -300,7 +321,7 @@ export default function Home() {
 
           <p className="animate-fade-up delay-200 text-[15px] font-medium uppercase tracking-[0.2em] mb-10"
              style={{ color: silver }}>
-            7 Models &mdash; 2, 4 &amp; 6 Seat Configurations
+            7 Models &mdash; 4 &amp; 6 Seat Configurations
           </p>
 
           <div className="animate-fade-up delay-300 flex flex-wrap gap-4 mb-16">
@@ -385,7 +406,7 @@ export default function Home() {
 
                 {/* Image */}
                 <div className="relative aspect-[16/10] overflow-hidden" style={{ background: '#0d0d0d' }}>
-                  {model.image.startsWith('/images/') ? (
+                  {model.image.startsWith('/images') ? (
                     <img src={model.image} alt={model.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center"
@@ -430,20 +451,35 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {/* Feature tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {model.features.slice(0, 3).map((f) => (
-                      <span key={f} className="text-[11px] font-light px-2 py-0.5"
-                            style={{ background: 'rgba(196,162,101,0.08)', color: 'rgba(255,255,255,0.45)', border: '1px solid rgba(196,162,101,0.12)' }}>
-                        {f}
-                      </span>
-                    ))}
-                    {model.features.length > 3 && (
-                      <span className="text-[11px] font-light px-2 py-0.5"
-                            style={{ color: 'rgba(255,255,255,0.25)' }}>
-                        +{model.features.length - 3} more
-                      </span>
-                    )}
+                  {/* Available colors */}
+                  <div className="mb-4">
+                    <div className="text-[10px] font-medium uppercase tracking-[0.12em] mb-1.5" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                      {model.colors.length} Color{model.colors.length > 1 ? 's' : ''} Available
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {model.colors.slice(0, 7).map((c) => (
+                        <span key={c} className="text-[10px] px-1.5 py-0.5"
+                              style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                          {c}
+                        </span>
+                      ))}
+                      {model.colors.length > 7 && (
+                        <span className="text-[10px] px-1.5 py-0.5" style={{ color: 'rgba(255,255,255,0.2)' }}>
+                          +{model.colors.length - 7}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Battery & SKU */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.1em] px-2 py-0.5"
+                          style={{ background: 'rgba(196,162,101,0.08)', color: gold, border: `1px solid ${gold}20` }}>
+                      {model.sku}
+                    </span>
+                    <span className="text-[10px] font-light" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                      {model.battery.join(' / ')}
+                    </span>
                   </div>
 
                   {/* CTA */}
@@ -728,6 +764,38 @@ export default function Home() {
                       {value}
                     </span>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Colors */}
+            <div className="px-6 pb-5">
+              <h4 className="text-[12px] font-bold uppercase tracking-[0.2em] mb-4"
+                  style={{ fontFamily: '"Outfit", sans-serif', color: gold }}>
+                Available Colors
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {specCart.colors.map((c) => (
+                  <span key={c} className="text-[12px] font-medium px-3 py-1.5"
+                        style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Battery Options */}
+            <div className="px-6 pb-5">
+              <h4 className="text-[12px] font-bold uppercase tracking-[0.2em] mb-4"
+                  style={{ fontFamily: '"Outfit", sans-serif', color: gold }}>
+                Battery Options
+              </h4>
+              <div className="flex gap-3">
+                {specCart.battery.map((b) => (
+                  <span key={b} className="text-[12px] font-medium px-3 py-1.5"
+                        style={{ background: 'rgba(196,162,101,0.08)', color: gold, border: `1px solid ${gold}20` }}>
+                    {b}
+                  </span>
                 ))}
               </div>
             </div>
