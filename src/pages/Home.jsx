@@ -10,7 +10,7 @@ const MODELS = [
     badge: 'Classic',
     seats: 4,
     category: '4-Seat',
-    image: '/images/stallion-white.png',
+    image: 'placeholder',
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -37,7 +37,7 @@ const MODELS = [
     badge: 'Adventure',
     seats: 4,
     category: '4-Seat',
-    image: '/images/stallion-blue.png',
+    image: 'placeholder',
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -64,7 +64,7 @@ const MODELS = [
     badge: 'Flagship',
     seats: 6,
     category: '6-Seat',
-    image: '/images/stallion-red.png',
+    image: 'placeholder',
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -92,6 +92,15 @@ const MODELS = [
     seats: 6,
     category: '6-Seat',
     image: '/images/stallion-black.png',
+    colorImages: {
+      White: '/images/stallion-white.png',
+      Grey: '/images/stallion-grey.png',
+      Blue: '/images/stallion-blue.png',
+      Black: '/images/stallion-black.png',
+      Orange: '/images/stallion-orange.png',
+      Red: '/images/stallion-red.png',
+      Teal: '/images/stallion-teal.png',
+    },
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -118,7 +127,7 @@ const MODELS = [
     badge: 'Versatile',
     seats: 4,
     category: '4-Seat',
-    image: '/images/stallion-orange.png',
+    image: 'placeholder',
     colors: ['White Gloss', 'Timeless Grey', 'Bright Blue', 'Black Gloss', 'Rich Green', 'Ferrari Red', 'Dark Blue', 'Deep Orange', 'Purple', 'Bright Teal', 'Candy Apple'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -145,7 +154,7 @@ const MODELS = [
     badge: 'Rugged',
     seats: 4,
     category: '4-Seat',
-    image: '/images/stallion-teal.png',
+    image: 'placeholder',
     colors: ['White Gloss', 'Timeless Grey', 'Bright Blue', 'Black Gloss', 'Rich Green', 'Ferrari Red', 'Dark Blue', 'Deep Orange', 'Purple', 'Bright Teal', 'Candy Apple'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -172,7 +181,7 @@ const MODELS = [
     badge: 'Pure',
     seats: 4,
     category: 'Golf',
-    image: '/images/stallion-white.png',
+    image: 'placeholder',
     colors: ['White'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -240,6 +249,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false)
   const [specCart, setSpecCart] = useState(null)
   const [filter, setFilter] = useState('All')
+  const [selectedColors, setSelectedColors] = useState({})
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -406,7 +416,13 @@ export default function Home() {
 
                 {/* Image */}
                 <div className="relative aspect-[16/10] overflow-hidden" style={{ background: '#0d0d0d' }}>
-                  {model.image.startsWith('/images') ? (
+                  {model.colorImages ? (
+                    <img
+                      src={model.colorImages[selectedColors[model.name] || model.colors[0]] || model.image}
+                      alt={`${model.name} ${selectedColors[model.name] || model.colors[0]}`}
+                      className="w-full h-full object-cover transition-all duration-500"
+                    />
+                  ) : model.image.startsWith('/images') ? (
                     <img src={model.image} alt={model.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center"
@@ -425,6 +441,27 @@ export default function Home() {
                     <div className="absolute top-3 left-3 text-[11px] font-bold uppercase tracking-[0.2em] px-3 py-1"
                          style={{ background: gold, color: bg }}>
                       {model.badge}
+                    </div>
+                  )}
+                  {model.colorImages && (
+                    <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
+                      {model.colors.map((c) => {
+                        const active = (selectedColors[model.name] || model.colors[0]) === c
+                        return (
+                          <button
+                            key={c}
+                            onClick={(e) => { e.stopPropagation(); setSelectedColors(prev => ({ ...prev, [model.name]: c })) }}
+                            className="w-6 h-6 rounded-full transition-all duration-200 cursor-pointer border-2"
+                            style={{
+                              background: c === 'White' ? '#f5f5f5' : c === 'Grey' ? '#8a8a8a' : c === 'Blue' ? '#2563eb' : c === 'Black' ? '#1a1a1a' : c === 'Orange' ? '#f97316' : c === 'Red' ? '#dc2626' : c === 'Teal' ? '#14b8a6' : '#666',
+                              borderColor: active ? gold : 'rgba(255,255,255,0.2)',
+                              transform: active ? 'scale(1.15)' : 'scale(1)',
+                              boxShadow: active ? `0 0 8px ${gold}66` : 'none',
+                            }}
+                            title={c}
+                          />
+                        )
+                      })}
                     </div>
                   )}
                 </div>

@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      @media print {
+        nav, footer, form, button:not(#order-summary button) { display: none !important; }
+        #order-summary { border: 2px solid #C4A265 !important; }
+        body { background: #fff !important; color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        * { color: #000 !important; }
+        [style*="color: rgb(196, 162, 101)"], [style*="color: #C4A265"] { color: #C4A265 !important; }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
