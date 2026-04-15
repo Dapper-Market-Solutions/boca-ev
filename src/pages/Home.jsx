@@ -251,6 +251,41 @@ function modelLiftStatus(model) {
   return null
 }
 
+const COLOR_HEX = {
+  // Stallion / Purebred palette
+  White: '#f5f5f5',
+  Grey: '#8a8a8a',
+  Blue: '#2563eb',
+  Black: '#1a1a1a',
+  Orange: '#f97316',
+  Red: '#dc2626',
+  Teal: '#14b8a6',
+  // Colt palette
+  'White Gloss': '#f5f5f5',
+  'Timeless Grey': '#7a7d82',
+  'Bright Blue': '#1e7dd0',
+  'Black Gloss': '#0d0d0d',
+  'Rich Green': '#2d5f3f',
+  'Ferrari Red': '#c1121f',
+  'Dark Blue': '#10264a',
+  'Deep Orange': '#d95a0f',
+  Purple: '#6b21a8',
+  'Bright Teal': '#0fb5a0',
+  'Candy Apple': '#a50000',
+}
+
+function colorFor(name) {
+  return COLOR_HEX[name] || '#666'
+}
+
+function isLightColor(name) {
+  const hex = colorFor(name).replace('#', '')
+  const r = parseInt(hex.slice(0, 2), 16)
+  const g = parseInt(hex.slice(2, 4), 16)
+  const b = parseInt(hex.slice(4, 6), 16)
+  return r * 0.299 + g * 0.587 + b * 0.114 > 150
+}
+
 export default function Home() {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '', model: '' })
   const [submitted, setSubmitted] = useState(false)
@@ -499,7 +534,7 @@ export default function Home() {
                             onClick={(e) => { e.stopPropagation(); setSelectedColors(prev => ({ ...prev, [model.name]: c })) }}
                             className="w-6 h-6 rounded-full transition-all duration-200 cursor-pointer border-2"
                             style={{
-                              background: c === 'White' ? '#f5f5f5' : c === 'Grey' ? '#8a8a8a' : c === 'Blue' ? '#2563eb' : c === 'Black' ? '#1a1a1a' : c === 'Orange' ? '#f97316' : c === 'Red' ? '#dc2626' : c === 'Teal' ? '#14b8a6' : '#666',
+                              background: colorFor(c),
                               borderColor: active ? gold : 'rgba(255,255,255,0.2)',
                               transform: active ? 'scale(1.15)' : 'scale(1)',
                               boxShadow: active ? `0 0 8px ${gold}66` : 'none',
@@ -863,12 +898,21 @@ export default function Home() {
                 Available Colors
               </h4>
               <div className="flex flex-wrap gap-2">
-                {specCart.colors.map((c) => (
-                  <span key={c} className="text-[12px] font-medium px-3 py-1.5"
-                        style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                    {c}
-                  </span>
-                ))}
+                {specCart.colors.map((c) => {
+                  const hex = colorFor(c)
+                  const light = isLightColor(c)
+                  return (
+                    <span key={c}
+                          className="text-[12px] font-medium px-3 py-1.5 rounded-full flex items-center gap-2"
+                          style={{
+                            background: hex,
+                            color: light ? '#0a0a0a' : '#f5f5f5',
+                            border: '1px solid rgba(255,255,255,0.15)',
+                          }}>
+                      {c}
+                    </span>
+                  )
+                })}
               </div>
             </div>
 
