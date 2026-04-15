@@ -558,10 +558,12 @@ export default function Home() {
                         </span>
                       )}
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {model.colors.map((c) => {
                         const active = model.colorImages && (selectedColors[model.name] || model.colors[0]) === c
                         const clickable = !!model.colorImages
+                        const hex = colorFor(c)
+                        const light = isLightColor(c)
                         return (
                           <button
                             key={c}
@@ -572,16 +574,18 @@ export default function Home() {
                               e.stopPropagation()
                               setSelectedColors(prev => ({ ...prev, [model.name]: c }))
                             }}
-                            className={`w-6 h-6 rounded-full transition-all duration-200 border-2 ${clickable ? 'cursor-pointer' : 'cursor-default'}`}
+                            className={`text-[12px] font-medium px-3 py-1.5 rounded-sm transition-all duration-200 ${clickable ? 'cursor-pointer' : 'cursor-default'}`}
                             style={{
-                              background: colorFor(c),
-                              borderColor: active ? gold : 'rgba(255,255,255,0.2)',
-                              transform: active ? 'scale(1.15)' : 'scale(1)',
-                              boxShadow: active ? `0 0 8px ${gold}66` : 'none',
+                              background: hex,
+                              color: light ? '#0a0a0a' : '#f5f5f5',
+                              border: active ? `1.5px solid ${gold}` : '1px solid rgba(255,255,255,0.15)',
+                              transform: active ? 'scale(1.05)' : 'scale(1)',
+                              boxShadow: active ? `0 0 10px ${gold}55` : 'none',
                             }}
-                            title={c}
                             aria-label={c}
-                          />
+                          >
+                            {c}
+                          </button>
                         )
                       })}
                     </div>
@@ -901,7 +905,7 @@ export default function Home() {
                   const light = isLightColor(c)
                   return (
                     <span key={c}
-                          className="text-[12px] font-medium px-3 py-1.5 rounded-full flex items-center gap-2"
+                          className="text-[12px] font-medium px-3 py-1.5 rounded-sm flex items-center gap-2"
                           style={{
                             background: hex,
                             color: light ? '#0a0a0a' : '#f5f5f5',
