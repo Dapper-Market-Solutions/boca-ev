@@ -524,27 +524,6 @@ export default function Home() {
                       {model.badge}
                     </div>
                   )}
-                  {model.colorImages && (
-                    <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
-                      {model.colors.map((c) => {
-                        const active = (selectedColors[model.name] || model.colors[0]) === c
-                        return (
-                          <button
-                            key={c}
-                            onClick={(e) => { e.stopPropagation(); setSelectedColors(prev => ({ ...prev, [model.name]: c })) }}
-                            className="w-6 h-6 rounded-full transition-all duration-200 cursor-pointer border-2"
-                            style={{
-                              background: colorFor(c),
-                              borderColor: active ? gold : 'rgba(255,255,255,0.2)',
-                              transform: active ? 'scale(1.15)' : 'scale(1)',
-                              boxShadow: active ? `0 0 8px ${gold}66` : 'none',
-                            }}
-                            title={c}
-                          />
-                        )
-                      })}
-                    </div>
-                  )}
                 </div>
 
                 {/* Info */}
@@ -569,23 +548,42 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {/* Available colors */}
+                  {/* Available colors — swatch dots */}
                   <div className="mb-4">
-                    <div className="text-[10px] font-medium uppercase tracking-[0.12em] mb-1.5" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                    <div className="text-[10px] font-medium uppercase tracking-[0.12em] mb-2" style={{ color: 'rgba(255,255,255,0.25)' }}>
                       {model.colors.length} Color{model.colors.length > 1 ? 's' : ''} Available
-                    </div>
-                    <div className="flex flex-wrap gap-1">
-                      {model.colors.slice(0, 7).map((c) => (
-                        <span key={c} className="text-[10px] px-1.5 py-0.5"
-                              style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                          {c}
-                        </span>
-                      ))}
-                      {model.colors.length > 7 && (
-                        <span className="text-[10px] px-1.5 py-0.5" style={{ color: 'rgba(255,255,255,0.2)' }}>
-                          +{model.colors.length - 7}
+                      {model.colorImages && (
+                        <span className="ml-2 font-normal normal-case tracking-normal" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                          — {selectedColors[model.name] || model.colors[0]}
                         </span>
                       )}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {model.colors.map((c) => {
+                        const active = model.colorImages && (selectedColors[model.name] || model.colors[0]) === c
+                        const clickable = !!model.colorImages
+                        return (
+                          <button
+                            key={c}
+                            type="button"
+                            disabled={!clickable}
+                            onClick={(e) => {
+                              if (!clickable) return
+                              e.stopPropagation()
+                              setSelectedColors(prev => ({ ...prev, [model.name]: c }))
+                            }}
+                            className={`w-6 h-6 rounded-full transition-all duration-200 border-2 ${clickable ? 'cursor-pointer' : 'cursor-default'}`}
+                            style={{
+                              background: colorFor(c),
+                              borderColor: active ? gold : 'rgba(255,255,255,0.2)',
+                              transform: active ? 'scale(1.15)' : 'scale(1)',
+                              boxShadow: active ? `0 0 8px ${gold}66` : 'none',
+                            }}
+                            title={c}
+                            aria-label={c}
+                          />
+                        )
+                      })}
                     </div>
                   </div>
 
