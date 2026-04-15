@@ -7,9 +7,9 @@ const silver = '#B8C0CC'
 
 const ORDER_MODELS = [
   {
-    name: 'Purebred',
+    name: 'Purebred Lowered',
     sku: 'PB-L540',
-    type: '4-Seat Forward · Non-Lifted',
+    type: '4-Seat Forward · Lowered',
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
   },
@@ -21,9 +21,9 @@ const ORDER_MODELS = [
     battery: ['48V 105AH', '48V 150AH'],
   },
   {
-    name: 'Stallion',
+    name: 'Stallion Lowered',
     sku: 'CLYD-6-NLFT-RB',
-    type: '6-Seat · Non-Lifted',
+    type: '6-Seat · Lowered',
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
   },
@@ -35,9 +35,9 @@ const ORDER_MODELS = [
     battery: ['48V 105AH', '48V 150AH'],
   },
   {
-    name: 'Colt',
+    name: 'Colt Lowered',
     sku: 'STL-4-SEAT-NLFT',
-    type: '4-Seat · Non-Lifted',
+    type: '4-Seat · Lowered',
     colors: ['White Gloss', 'Timeless Grey', 'Bright Blue', 'Black Gloss', 'Rich Green', 'Ferrari Red', 'Dark Blue', 'Deep Orange', 'Purple', 'Bright Teal', 'Candy Apple'],
     battery: ['48V 105AH', '48V 150AH'],
   },
@@ -137,8 +137,13 @@ export default function Order() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl" style={{ background: 'rgba(10,10,10,0.85)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="text-base font-bold tracking-[0.2em] uppercase" style={{ color: gold }}>
-            Boca EV
+          <Link to="/" className="flex flex-col leading-tight">
+            <span className="text-base font-bold tracking-[0.2em] uppercase" style={{ color: gold }}>
+              Boca EV
+            </span>
+            <span className="text-[9px] font-medium tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.4)' }}>
+              by PDG Powersports
+            </span>
           </Link>
           <span className="text-[13px] font-medium uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.35)' }}>
             Dealer Order Form
@@ -409,8 +414,13 @@ export default function Order() {
       {/* Footer */}
       <footer className="px-6 py-10" style={{ background: bg, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link to="/" className="text-[14px] font-bold uppercase tracking-[0.2em]" style={{ color: gold }}>
-            Boca EV
+          <Link to="/" className="flex flex-col leading-tight">
+            <span className="text-[14px] font-bold uppercase tracking-[0.2em]" style={{ color: gold }}>
+              Boca EV
+            </span>
+            <span className="text-[9px] font-medium tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.3)' }}>
+              by PDG Powersports
+            </span>
           </Link>
           <span className="text-[13px] font-light italic" style={{ color: 'rgba(255,255,255,0.15)' }}>
             Elegance, Electrified.

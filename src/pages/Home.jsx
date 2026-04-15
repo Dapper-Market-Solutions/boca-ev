@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 /* ── 7 Cart Models ── */
 const MODELS = [
   {
-    name: 'Purebred',
+    name: 'Purebred Lowered',
     sku: 'PB-L540',
-    type: '4-Seat Forward · Non-Lifted',
+    type: '4-Seat Forward · Lowered',
     badge: 'Classic',
     seats: 4,
     category: '4-Seat',
@@ -58,9 +58,9 @@ const MODELS = [
     ],
   },
   {
-    name: 'Stallion',
+    name: 'Stallion Lowered',
     sku: 'CLYD-6-NLFT-RB',
-    type: '6-Seat · Non-Lifted',
+    type: '6-Seat · Lowered',
     badge: 'Flagship',
     seats: 6,
     category: '6-Seat',
@@ -121,9 +121,9 @@ const MODELS = [
     ],
   },
   {
-    name: 'Colt',
+    name: 'Colt Lowered',
     sku: 'STL-4-SEAT-NLFT',
-    type: '4-Seat · Non-Lifted',
+    type: '4-Seat · Lowered',
     badge: 'Versatile',
     seats: 4,
     category: '4-Seat',
@@ -272,9 +272,14 @@ export default function Home() {
       {/* ── Nav ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl" style={{ background: 'rgba(10,10,10,0.85)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-base font-bold tracking-[0.2em] uppercase" style={{ fontFamily: '"Outfit", sans-serif', color: gold }}>
-            Boca EV
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-base font-bold tracking-[0.2em] uppercase" style={{ fontFamily: '"Outfit", sans-serif', color: gold }}>
+              Boca EV
+            </span>
+            <span className="text-[9px] font-medium tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.4)' }}>
+              by PDG Powersports
+            </span>
+          </div>
           <div className="hidden sm:flex items-center gap-8 text-[13px] font-medium uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.35)' }}>
             <a href="#models" className="hover:text-white transition">Models</a>
             <a href="#why-boca" className="hover:text-white transition">Why Boca</a>
@@ -310,8 +315,12 @@ export default function Home() {
              style={{ background: `radial-gradient(circle, ${gold} 0%, transparent 70%)` }} />
 
         <div className="relative w-full max-w-6xl mx-auto px-6 py-24">
-          <p className="animate-fade-up text-[13px] font-medium uppercase tracking-[0.35em] mb-8"
+          <p className="animate-fade-up text-[13px] font-medium uppercase tracking-[0.35em] mb-2"
              style={{ fontFamily: '"Outfit", sans-serif', color: gold }}>
+            Boca EV — by PDG Powersports
+          </p>
+          <p className="animate-fade-up text-[11px] font-medium uppercase tracking-[0.3em] mb-8"
+             style={{ color: 'rgba(255,255,255,0.4)' }}>
             Premium Electric Golf Carts
           </p>
 
@@ -726,10 +735,15 @@ export default function Home() {
       {/* ── Footer ── */}
       <footer className="px-6 py-10" style={{ background: bg, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-[14px] font-bold uppercase tracking-[0.2em]"
-                style={{ fontFamily: '"Outfit", sans-serif', color: gold }}>
-            Boca EV
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-[14px] font-bold uppercase tracking-[0.2em]"
+                  style={{ fontFamily: '"Outfit", sans-serif', color: gold }}>
+              Boca EV
+            </span>
+            <span className="text-[9px] font-medium tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.3)' }}>
+              by PDG Powersports
+            </span>
+          </div>
           <div className="flex gap-6 text-[13px] font-light" style={{ color: 'rgba(255,255,255,0.2)' }}>
             <Link to="/privacy" className="hover:text-white/40 transition">Privacy Policy</Link>
           </div>
