@@ -243,12 +243,20 @@ const PILLARS = [
 ]
 
 const CATEGORIES = ['All', '4-Seat', '6-Seat', 'Golf']
+const LIFT_OPTIONS = ['All', 'Lowered', 'Lifted']
+
+function modelLiftStatus(model) {
+  if (/lifted/i.test(model.type)) return 'Lifted'
+  if (/lowered/i.test(model.type)) return 'Lowered'
+  return null
+}
 
 export default function Home() {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '', model: '' })
   const [submitted, setSubmitted] = useState(false)
   const [specCart, setSpecCart] = useState(null)
   const [filter, setFilter] = useState('All')
+  const [liftFilter, setLiftFilter] = useState('All')
   const [selectedColors, setSelectedColors] = useState({})
 
   function handleSubmit(e) {
@@ -264,7 +272,11 @@ export default function Home() {
   const bg = '#0a0a0a'
   const silver = '#B8C0CC'
 
-  const filteredModels = filter === 'All' ? MODELS : MODELS.filter(m => m.category === filter)
+  const filteredModels = MODELS.filter(m => {
+    if (filter !== 'All' && m.category !== filter) return false
+    if (liftFilter !== 'All' && modelLiftStatus(m) !== liftFilter) return false
+    return true
+  })
 
   return (
     <div className="min-h-screen" style={{ fontFamily: '"Outfit", sans-serif', background: bg, color: '#fff' }}>
@@ -398,23 +410,48 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Category filter */}
-          <div className="flex gap-3 mb-10">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className="text-[12px] font-semibold uppercase tracking-[0.2em] px-5 py-2.5 transition cursor-pointer"
-                style={{
-                  background: filter === cat ? gold : 'transparent',
-                  color: filter === cat ? bg : 'rgba(255,255,255,0.35)',
-                  border: filter === cat ? `1px solid ${gold}` : '1px solid rgba(255,255,255,0.1)',
-                }}
-                onMouseEnter={(e) => { if (filter !== cat) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)' }}
-                onMouseLeave={(e) => { if (filter !== cat) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}>
-                {cat}
-              </button>
-            ))}
+          {/* Filters */}
+          <div className="space-y-3 mb-10">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] mr-1" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                Type
+              </span>
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setFilter(cat)}
+                  className="text-[12px] font-semibold uppercase tracking-[0.2em] px-5 py-2.5 transition cursor-pointer"
+                  style={{
+                    background: filter === cat ? gold : 'transparent',
+                    color: filter === cat ? bg : 'rgba(255,255,255,0.35)',
+                    border: filter === cat ? `1px solid ${gold}` : '1px solid rgba(255,255,255,0.1)',
+                  }}
+                  onMouseEnter={(e) => { if (filter !== cat) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)' }}
+                  onMouseLeave={(e) => { if (filter !== cat) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}>
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] mr-1" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                Stance
+              </span>
+              {LIFT_OPTIONS.map((opt) => (
+                <button
+                  key={opt}
+                  onClick={() => setLiftFilter(opt)}
+                  className="text-[12px] font-semibold uppercase tracking-[0.2em] px-5 py-2.5 transition cursor-pointer"
+                  style={{
+                    background: liftFilter === opt ? gold : 'transparent',
+                    color: liftFilter === opt ? bg : 'rgba(255,255,255,0.35)',
+                    border: liftFilter === opt ? `1px solid ${gold}` : '1px solid rgba(255,255,255,0.1)',
+                  }}
+                  onMouseEnter={(e) => { if (liftFilter !== opt) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)' }}
+                  onMouseLeave={(e) => { if (liftFilter !== opt) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}>
+                  {opt}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
