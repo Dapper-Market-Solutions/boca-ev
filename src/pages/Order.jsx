@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-const gold = '#C4A265'
-const bg = '#0a0a0a'
-const silver = '#B8C0CC'
+const gold = '#C0C0C0'
+const bg = '#000000'
+const silver = '#6E6E6E'
+const charcoal = '#2B2B2B'
 
 const ORDER_MODELS = [
   {
@@ -165,7 +166,7 @@ export default function Order() {
           <form onSubmit={handleSubmit}>
 
             {/* Dealer Info */}
-            <div className="mb-10 p-6 sm:p-8" style={{ background: '#111', border: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="mb-10 p-6 sm:p-8" style={{ background: '#2B2B2B', border: '1px solid rgba(255,255,255,0.06)' }}>
               <h2 className="text-[14px] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: gold }}>
                 Dealer Information
               </h2>
@@ -203,7 +204,7 @@ export default function Order() {
                 {models.map((model, modelIdx) => {
                   const total = getModelTotal(model)
                   return (
-                    <div key={model.sku} className="p-6" style={{ background: '#111', border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div key={model.sku} className="p-6" style={{ background: '#2B2B2B', border: '1px solid rgba(255,255,255,0.06)' }}>
                       <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
                         <div>
                           <h3 className="text-lg font-bold uppercase tracking-wide" style={{ fontFamily: '"Outfit", sans-serif' }}>
@@ -279,7 +280,7 @@ export default function Order() {
             </div>
 
             {/* Special Instructions */}
-            <div className="mb-8 p-6" style={{ background: '#111', border: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="mb-8 p-6" style={{ background: '#2B2B2B', border: '1px solid rgba(255,255,255,0.06)' }}>
               <label className="block text-[14px] font-semibold uppercase tracking-[0.15em] mb-3"
                      style={{ color: 'rgba(255,255,255,0.3)' }}>Special Instructions</label>
               <textarea
@@ -295,7 +296,7 @@ export default function Order() {
             </div>
 
             {/* Order Total & Submit */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-4 p-6" style={{ background: '#111', border: `1px solid ${gold}33` }}>
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-4 p-6" style={{ background: '#2B2B2B', border: `1px solid ${gold}33` }}>
               <div>
                 <div className="text-[14px] font-semibold uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.3)' }}>
                   Total Carts Requested
@@ -308,7 +309,7 @@ export default function Order() {
                 type="submit"
                 className="px-10 py-4 text-[14px] font-bold uppercase tracking-[0.25em] transition cursor-pointer"
                 style={{ background: gold, color: bg }}
-                onMouseEnter={(e) => e.target.style.background = '#d4b275'}
+                onMouseEnter={(e) => e.target.style.background = '#d0d0d0'}
                 onMouseLeave={(e) => e.target.style.background = gold}
               >
                 Review &amp; Submit Order
@@ -318,7 +319,7 @@ export default function Order() {
 
           {/* Order Summary */}
           {submitted && summaryData && (
-            <div ref={summaryRef} className="mt-12 p-8" id="order-summary" style={{ background: '#111', border: `1px solid ${gold}33` }}>
+            <div ref={summaryRef} className="mt-12 p-8" id="order-summary" style={{ background: '#2B2B2B', border: `1px solid ${gold}33` }}>
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h2 className="text-2xl font-bold uppercase tracking-tight" style={{ fontFamily: '"Outfit", sans-serif' }}>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
-const gold = '#C4A265'
-const bg = '#0a0a0a'
+const gold = '#C0C0C0'
+const bg = '#000000'
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false)
@@ -33,7 +33,7 @@ export default function CookieConsent() {
     >
       <div
         className="p-5 shadow-2xl"
-        style={{ background: '#111', border: `1px solid ${gold}33`, fontFamily: '"Outfit", sans-serif' }}
+        style={{ background: '#2B2B2B', border: `1px solid ${gold}33`, fontFamily: '"Outfit", sans-serif' }}
       >
         <p className="text-white text-[14px] font-semibold mb-2">We value your privacy</p>
         <p className="text-[14px] font-light leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>
@@ -59,7 +59,7 @@ export default function CookieConsent() {
             onClick={accept}
             className="flex-1 py-2.5 text-[14px] font-bold uppercase tracking-[0.15em] transition cursor-pointer"
             style={{ background: gold, color: bg }}
-            onMouseEnter={(e) => e.target.style.background = '#d4b275'}
+            onMouseEnter={(e) => e.target.style.background = '#d0d0d0'}
             onMouseLeave={(e) => e.target.style.background = gold}
           >
             Accept

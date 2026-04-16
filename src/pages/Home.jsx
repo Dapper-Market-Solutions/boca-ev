@@ -264,7 +264,7 @@ const COLOR_HEX = {
   'White Gloss': '#f5f5f5',
   'Timeless Grey': '#7a7d82',
   'Bright Blue': '#1e7dd0',
-  'Black Gloss': '#0d0d0d',
+  'Black Gloss': '#111111',
   'Rich Green': '#2d5f3f',
   'Ferrari Red': '#c1121f',
   'Dark Blue': '#10264a',
@@ -303,9 +303,11 @@ export default function Home() {
     setForm(prev => ({ ...prev, [field]: value }))
   }
 
-  const gold = '#C4A265'
-  const bg = '#0a0a0a'
-  const silver = '#B8C0CC'
+  const gold = '#C0C0C0'
+  const bg = '#000000'
+  const silver = '#6E6E6E'
+  const deepBlue = '#0A2A4A'
+  const charcoal = '#2B2B2B'
 
   const filteredModels = MODELS.filter(m => {
     if (filter !== 'All' && m.category !== filter) return false
@@ -345,7 +347,7 @@ export default function Home() {
       <section className="relative pt-16 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="w-full h-full" style={{
-            background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 40%, #0d0d0d 100%)',
+            background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 40%, #111111 100%)',
           }} />
           <div className="absolute inset-0" style={{
             background: 'linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 50%, rgba(10,10,10,0.7) 100%)',
@@ -389,7 +391,7 @@ export default function Home() {
             <a href="#models"
               className="inline-flex items-center gap-3 text-[14px] font-semibold uppercase tracking-[0.2em] px-8 py-4 transition"
               style={{ background: gold, color: bg }}
-              onMouseEnter={(e) => e.target.style.background = '#d4b275'}
+              onMouseEnter={(e) => e.target.style.background = '#d0d0d0'}
               onMouseLeave={(e) => e.target.style.background = gold}>
               Explore the Collection
               <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
@@ -488,10 +490,10 @@ export default function Home() {
             {filteredModels.map((model) => (
               <div key={model.name}
                 className="group flex flex-col overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-black/50"
-                style={{ background: '#111111', border: '1px solid rgba(255,255,255,0.06)' }}>
+                style={{ background: '#2B2B2B', border: '1px solid rgba(255,255,255,0.06)' }}>
 
                 {/* Image */}
-                <div className="relative aspect-[16/10] overflow-hidden" style={{ background: '#0d0d0d' }}>
+                <div className="relative aspect-[16/10] overflow-hidden" style={{ background: '#111111' }}>
                   {model.colorImages ? (
                     <img
                       src={model.colorImages[selectedColors[model.name] || model.colors[0]] || model.image}
@@ -502,7 +504,7 @@ export default function Home() {
                     <img src={model.image} alt={model.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center"
-                         style={{ background: 'linear-gradient(135deg, #111 0%, #1a1a1a 50%, #111 100%)' }}>
+                         style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #2B2B2B 50%, #1a1a1a 100%)' }}>
                       <div className="text-center">
                         <span className="text-4xl font-extrabold uppercase tracking-tight block" style={{ color: 'rgba(255,255,255,0.06)' }}>
                           {model.name}
@@ -589,7 +591,7 @@ export default function Home() {
                   {/* Battery & SKU */}
                   <div className="flex items-center gap-3 mb-5">
                     <span className="text-[14px] font-medium uppercase tracking-[0.1em] px-2 py-0.5"
-                          style={{ background: 'rgba(196,162,101,0.08)', color: gold, border: `1px solid ${gold}20` }}>
+                          style={{ background: 'rgba(192,192,192,0.08)', color: gold, border: `1px solid ${gold}20` }}>
                       {model.sku}
                     </span>
                     <span className="text-[14px] font-light" style={{ color: 'rgba(255,255,255,0.25)' }}>
@@ -638,7 +640,7 @@ export default function Home() {
                 className="animate-fade-up group p-8 transition-all duration-500 hover:translate-y-[-4px]"
                 style={{
                   animationDelay: `${i * 100}ms`,
-                  background: '#111111',
+                  background: '#2B2B2B',
                   border: '1px solid rgba(255,255,255,0.06)',
                 }}>
                 <div className="mb-6 transition-colors duration-300" style={{ color: gold }}>
@@ -692,7 +694,7 @@ export default function Home() {
           {submitted ? (
             <div className="text-center py-16">
               <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center"
-                   style={{ background: `rgba(196,162,101,0.1)`, border: `1px solid ${gold}33` }}>
+                   style={{ background: `rgba(192,192,192,0.1)`, border: `1px solid ${gold}33` }}>
                 <svg className="w-7 h-7" style={{ color: gold }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
@@ -776,18 +778,18 @@ export default function Home() {
                       style={{ borderColor: 'rgba(255,255,255,0.08)', color: form.model ? '#fff' : 'rgba(255,255,255,0.15)' }}
                       onFocus={(e) => e.target.style.borderColor = gold}
                       onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}>
-                      <option value="" style={{ background: '#111', color: '#888' }}>Select a model or full lineup...</option>
+                      <option value="" style={{ background: '#2B2B2B', color: '#888' }}>Select a model or full lineup...</option>
                       {MODELS.map(m => (
-                        <option key={m.name} value={m.name} style={{ background: '#111', color: '#fff' }}>{m.name} &mdash; {m.type}</option>
+                        <option key={m.name} value={m.name} style={{ background: '#2B2B2B', color: '#fff' }}>{m.name} &mdash; {m.type}</option>
                       ))}
-                      <option value="full-lineup" style={{ background: '#111', color: '#fff' }}>Full Lineup</option>
+                      <option value="full-lineup" style={{ background: '#2B2B2B', color: '#fff' }}>Full Lineup</option>
                     </select>
                   </div>
 
                   <button type="submit"
                     className="w-full mt-4 py-4 text-[14px] font-bold uppercase tracking-[0.25em] transition cursor-pointer"
                     style={{ fontFamily: '"Outfit", sans-serif', background: gold, color: bg }}
-                    onMouseEnter={(e) => e.target.style.background = '#d4b275'}
+                    onMouseEnter={(e) => e.target.style.background = '#d0d0d0'}
                     onMouseLeave={(e) => e.target.style.background = gold}>
                     Submit Dealer Inquiry
                   </button>
@@ -822,13 +824,13 @@ export default function Home() {
              onClick={() => setSpecCart(null)}>
           <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
           <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl"
-               style={{ background: '#111111', border: `1px solid ${gold}22` }}
+               style={{ background: '#2B2B2B', border: `1px solid ${gold}22` }}
                onClick={(e) => e.stopPropagation()}>
 
             {/* Modal header */}
             <div className="relative aspect-[16/10] overflow-hidden" style={{ background: '#0a0a0a' }}>
               <div className="w-full h-full flex items-center justify-center"
-                   style={{ background: 'linear-gradient(135deg, #111 0%, #1a1a1a 50%, #111 100%)' }}>
+                   style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #2B2B2B 50%, #1a1a1a 100%)' }}>
                 <span className="text-5xl font-extrabold uppercase tracking-tight" style={{ color: 'rgba(255,255,255,0.04)' }}>
                   {specCart.name}
                 </span>
@@ -847,7 +849,7 @@ export default function Home() {
                 &times;
               </button>
               <div className="absolute bottom-0 left-0 right-0 h-16"
-                   style={{ background: 'linear-gradient(transparent, #111111)' }} />
+                   style={{ background: 'linear-gradient(transparent, #2B2B2B)' }} />
             </div>
 
             {/* Name */}
@@ -916,7 +918,7 @@ export default function Home() {
               <div className="flex gap-3">
                 {specCart.battery.map((b) => (
                   <span key={b} className="text-[14px] font-medium px-3 py-1.5"
-                        style={{ background: 'rgba(196,162,101,0.08)', color: gold, border: `1px solid ${gold}20` }}>
+                        style={{ background: 'rgba(192,192,192,0.08)', color: gold, border: `1px solid ${gold}20` }}>
                     {b}
                   </span>
                 ))}
@@ -932,7 +934,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-2">
                 {specCart.features.map((f) => (
                   <span key={f} className="text-[14px] font-light px-3 py-1.5"
-                        style={{ background: 'rgba(196,162,101,0.06)', color: 'rgba(255,255,255,0.55)', border: `1px solid ${gold}15` }}>
+                        style={{ background: 'rgba(192,192,192,0.06)', color: 'rgba(255,255,255,0.55)', border: `1px solid ${gold}15` }}>
                     {f}
                   </span>
                 ))}
@@ -945,7 +947,7 @@ export default function Home() {
                  onClick={() => setSpecCart(null)}
                  className="block w-full py-3.5 text-center text-[14px] font-bold uppercase tracking-[0.2em] transition"
                  style={{ fontFamily: '"Outfit", sans-serif', background: gold, color: bg }}
-                 onMouseEnter={(e) => e.target.style.background = '#d4b275'}
+                 onMouseEnter={(e) => e.target.style.background = '#d0d0d0'}
                  onMouseLeave={(e) => e.target.style.background = gold}>
                 Inquire About This Model
               </a>

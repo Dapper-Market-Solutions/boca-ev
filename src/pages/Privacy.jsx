@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-const gold = '#C4A265'
-const bg = '#0a0a0a'
+const gold = '#C0C0C0'
+const bg = '#000000'
 
 export default function Privacy() {
   return (
