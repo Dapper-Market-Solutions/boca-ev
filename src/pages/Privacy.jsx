@@ -10,10 +10,10 @@ export default function Privacy() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl" style={{ background: 'rgba(10,10,10,0.85)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="text-base font-bold tracking-[0.2em] uppercase" style={{ color: gold }}>
-            Boca EV
+          <Link to="/" className="flex items-center">
+            <img src="/images/boca-logo-silver.png" alt="Boca EV" className="h-6" />
           </Link>
-          <Link to="/" className="text-[13px] font-medium uppercase tracking-[0.15em] hover:text-white transition"
+          <Link to="/" className="text-[14px] font-medium uppercase tracking-[0.15em] hover:text-white transition"
                 style={{ color: 'rgba(255,255,255,0.35)' }}>
             Back to Home
           </Link>
@@ -22,7 +22,7 @@ export default function Privacy() {
 
       <div className="pt-32 pb-24 px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-[13px] font-medium uppercase tracking-[0.35em] mb-4" style={{ color: gold }}>
+          <p className="text-[14px] font-medium uppercase tracking-[0.35em] mb-4" style={{ color: gold }}>
             Legal
           </p>
           <h1 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight mb-12"
@@ -107,10 +107,10 @@ export default function Privacy() {
       {/* Footer */}
       <footer className="px-6 py-10" style={{ background: bg, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link to="/" className="text-[14px] font-bold uppercase tracking-[0.2em]" style={{ color: gold }}>
-            Boca EV
+          <Link to="/" className="flex items-center">
+            <img src="/images/boca-logo-silver.png" alt="Boca EV" className="h-5" />
           </Link>
-          <span className="text-[13px] font-light italic" style={{ color: 'rgba(255,255,255,0.15)' }}>
+          <span className="text-[14px] font-light italic" style={{ color: 'rgba(255,255,255,0.15)' }}>
             Elegance, Electrified.
           </span>
         </div>

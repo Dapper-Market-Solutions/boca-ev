@@ -137,15 +137,10 @@ export default function Order() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl" style={{ background: 'rgba(10,10,10,0.85)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="flex flex-col leading-tight">
-            <span className="text-base font-bold tracking-[0.2em] uppercase" style={{ color: gold }}>
-              Boca EV
-            </span>
-            <span className="text-[9px] font-medium tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.4)' }}>
-              by PDG Powersports
-            </span>
+          <Link to="/" className="flex items-center">
+            <img src="/images/boca-logo-silver.png" alt="Boca EV" className="h-6" />
           </Link>
-          <span className="text-[13px] font-medium uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          <span className="text-[14px] font-medium uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.35)' }}>
             Dealer Order Form
           </span>
         </div>
@@ -156,7 +151,7 @@ export default function Order() {
 
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="text-[13px] font-medium uppercase tracking-[0.35em] mb-4" style={{ color: gold }}>
+            <p className="text-[14px] font-medium uppercase tracking-[0.35em] mb-4" style={{ color: gold }}>
               PDG Powersports
             </p>
             <h1 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight mb-3" style={{ fontFamily: '"Outfit", sans-serif' }}>
@@ -171,7 +166,7 @@ export default function Order() {
 
             {/* Dealer Info */}
             <div className="mb-10 p-6 sm:p-8" style={{ background: '#111', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <h2 className="text-[13px] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: gold }}>
+              <h2 className="text-[14px] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: gold }}>
                 Dealer Information
               </h2>
               <div className="grid sm:grid-cols-2 gap-5">
@@ -184,7 +179,7 @@ export default function Order() {
                   ['date', 'Requested Delivery Date', 'date', ''],
                 ].map(([field, label, type, ph]) => (
                   <div key={field}>
-                    <label className="block text-[11px] font-semibold uppercase tracking-[0.15em] mb-2"
+                    <label className="block text-[14px] font-semibold uppercase tracking-[0.15em] mb-2"
                            style={{ color: 'rgba(255,255,255,0.3)' }}>{label}</label>
                     <input type={type} required value={dealer[field]}
                       onChange={(e) => updateDealer(field, e.target.value)}
@@ -200,7 +195,7 @@ export default function Order() {
 
             {/* Model Selection */}
             <div className="mb-10">
-              <h2 className="text-[13px] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: gold }}>
+              <h2 className="text-[14px] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: gold }}>
                 Model Selection &amp; Color / Quantity
               </h2>
 
@@ -214,15 +209,15 @@ export default function Order() {
                           <h3 className="text-lg font-bold uppercase tracking-wide" style={{ fontFamily: '"Outfit", sans-serif' }}>
                             {model.name}
                           </h3>
-                          <p className="text-[12px] font-medium uppercase tracking-[0.15em]" style={{ color: gold }}>
+                          <p className="text-[14px] font-medium uppercase tracking-[0.15em]" style={{ color: gold }}>
                             {model.type}
                           </p>
-                          <p className="text-[11px] font-light mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                          <p className="text-[14px] font-light mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>
                             SKU: {model.sku}
                           </p>
                         </div>
                         <div className="text-right">
-                          <div className="text-[11px] font-medium uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                          <div className="text-[14px] font-medium uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.25)' }}>
                             Subtotal
                           </div>
                           <div className="text-xl font-bold" style={{ color: total > 0 ? gold : 'rgba(255,255,255,0.15)' }}>
@@ -233,7 +228,7 @@ export default function Order() {
 
                       {/* Battery Option */}
                       <div className="mb-4">
-                        <div className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                        <div className="text-[14px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
                           Battery Option
                         </div>
                         <div className="flex gap-3">
@@ -242,7 +237,7 @@ export default function Order() {
                               key={b}
                               type="button"
                               onClick={() => updateBattery(modelIdx, b)}
-                              className="text-[12px] font-medium px-4 py-2 transition cursor-pointer"
+                              className="text-[14px] font-medium px-4 py-2 transition cursor-pointer"
                               style={{
                                 background: model.selectedBattery === b ? gold : 'transparent',
                                 color: model.selectedBattery === b ? bg : 'rgba(255,255,255,0.4)',
@@ -259,7 +254,7 @@ export default function Order() {
                       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                         {model.colors.map((color) => (
                           <div key={color} className="flex items-center gap-3 p-2.5" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
-                            <span className="text-[12px] font-medium flex-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                            <span className="text-[14px] font-medium flex-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
                               {color}
                             </span>
                             <input
@@ -285,7 +280,7 @@ export default function Order() {
 
             {/* Special Instructions */}
             <div className="mb-8 p-6" style={{ background: '#111', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <label className="block text-[11px] font-semibold uppercase tracking-[0.15em] mb-3"
+              <label className="block text-[14px] font-semibold uppercase tracking-[0.15em] mb-3"
                      style={{ color: 'rgba(255,255,255,0.3)' }}>Special Instructions</label>
               <textarea
                 value={instructions}
@@ -302,7 +297,7 @@ export default function Order() {
             {/* Order Total & Submit */}
             <div className="flex flex-wrap items-center justify-between gap-4 mb-4 p-6" style={{ background: '#111', border: `1px solid ${gold}33` }}>
               <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                <div className="text-[14px] font-semibold uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.3)' }}>
                   Total Carts Requested
                 </div>
                 <div className="text-3xl font-bold" style={{ color: gold }}>
@@ -311,7 +306,7 @@ export default function Order() {
               </div>
               <button
                 type="submit"
-                className="px-10 py-4 text-[13px] font-bold uppercase tracking-[0.25em] transition cursor-pointer"
+                className="px-10 py-4 text-[14px] font-bold uppercase tracking-[0.25em] transition cursor-pointer"
                 style={{ background: gold, color: bg }}
                 onMouseEnter={(e) => e.target.style.background = '#d4b275'}
                 onMouseLeave={(e) => e.target.style.background = gold}
@@ -329,13 +324,13 @@ export default function Order() {
                   <h2 className="text-2xl font-bold uppercase tracking-tight" style={{ fontFamily: '"Outfit", sans-serif' }}>
                     Order <span style={{ color: gold }}>Summary</span>
                   </h2>
-                  <p className="text-[12px] font-light mt-1" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                  <p className="text-[14px] font-light mt-1" style={{ color: 'rgba(255,255,255,0.3)' }}>
                     {summaryData.date}
                   </p>
                 </div>
                 <button
                   onClick={handlePrint}
-                  className="px-6 py-2.5 text-[12px] font-semibold uppercase tracking-[0.15em] transition cursor-pointer"
+                  className="px-6 py-2.5 text-[14px] font-semibold uppercase tracking-[0.15em] transition cursor-pointer"
                   style={{ border: `1px solid ${gold}`, color: gold }}
                   onMouseEnter={(e) => { e.target.style.background = gold; e.target.style.color = bg }}
                   onMouseLeave={(e) => { e.target.style.background = 'transparent'; e.target.style.color = gold }}
@@ -346,7 +341,7 @@ export default function Order() {
 
               {/* Dealer Info Summary */}
               <div className="mb-6 pb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] mb-3" style={{ color: gold }}>Dealer</h3>
+                <h3 className="text-[14px] font-bold uppercase tracking-[0.15em] mb-3" style={{ color: gold }}>Dealer</h3>
                 <div className="grid sm:grid-cols-2 gap-2 text-sm">
                   <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>Name:</span> {summaryData.dealer.name}</div>
                   <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>Contact:</span> {summaryData.dealer.contact}</div>
@@ -359,15 +354,15 @@ export default function Order() {
 
               {/* Order Lines */}
               <div className="mb-6">
-                <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] mb-3" style={{ color: gold }}>Order Details</h3>
+                <h3 className="text-[14px] font-bold uppercase tracking-[0.15em] mb-3" style={{ color: gold }}>Order Details</h3>
                 <table className="w-full text-sm">
                   <thead>
                     <tr style={{ borderBottom: `1px solid ${gold}33` }}>
-                      <th className="text-left py-2 text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>Model</th>
-                      <th className="text-left py-2 text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>SKU</th>
-                      <th className="text-left py-2 text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>Color</th>
-                      <th className="text-left py-2 text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>Battery</th>
-                      <th className="text-right py-2 text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>Qty</th>
+                      <th className="text-left py-2 text-[14px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>Model</th>
+                      <th className="text-left py-2 text-[14px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>SKU</th>
+                      <th className="text-left py-2 text-[14px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>Color</th>
+                      <th className="text-left py-2 text-[14px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>Battery</th>
+                      <th className="text-right py-2 text-[14px] font-semibold uppercase tracking-[0.12em]" style={{ color: gold }}>Qty</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -383,7 +378,7 @@ export default function Order() {
                   </tbody>
                   <tfoot>
                     <tr style={{ borderTop: `1px solid ${gold}33` }}>
-                      <td colSpan={4} className="py-3 text-right text-[12px] font-bold uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                      <td colSpan={4} className="py-3 text-right text-[14px] font-bold uppercase tracking-[0.15em]" style={{ color: 'rgba(255,255,255,0.5)' }}>
                         Total Carts
                       </td>
                       <td className="py-3 text-right text-xl font-bold" style={{ color: gold }}>
@@ -397,12 +392,12 @@ export default function Order() {
               {/* Special Instructions */}
               {summaryData.instructions && (
                 <div className="mb-6 pb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                  <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] mb-2" style={{ color: gold }}>Special Instructions</h3>
+                  <h3 className="text-[14px] font-bold uppercase tracking-[0.15em] mb-2" style={{ color: gold }}>Special Instructions</h3>
                   <p className="text-sm font-light" style={{ color: 'rgba(255,255,255,0.5)' }}>{summaryData.instructions}</p>
                 </div>
               )}
 
-              <p className="text-center text-[12px] font-light mt-6" style={{ color: 'rgba(255,255,255,0.2)' }}>
+              <p className="text-center text-[14px] font-light mt-6" style={{ color: 'rgba(255,255,255,0.2)' }}>
                 Use "Print / Save PDF" to generate a PDF of this order. A copy will be sent to the sales team.
               </p>
             </div>
@@ -414,15 +409,10 @@ export default function Order() {
       {/* Footer */}
       <footer className="px-6 py-10" style={{ background: bg, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link to="/" className="flex flex-col leading-tight">
-            <span className="text-[14px] font-bold uppercase tracking-[0.2em]" style={{ color: gold }}>
-              Boca EV
-            </span>
-            <span className="text-[9px] font-medium tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.3)' }}>
-              by PDG Powersports
-            </span>
+          <Link to="/" className="flex items-center">
+            <img src="/images/boca-logo-silver.png" alt="Boca EV" className="h-5" />
           </Link>
-          <span className="text-[13px] font-light italic" style={{ color: 'rgba(255,255,255,0.15)' }}>
+          <span className="text-[14px] font-light italic" style={{ color: 'rgba(255,255,255,0.15)' }}>
             Elegance, Electrified.
           </span>
         </div>
