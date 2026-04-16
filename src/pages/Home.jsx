@@ -377,9 +377,7 @@ export default function Home() {
 
           <p className="animate-fade-up delay-200 text-lg sm:text-xl font-light leading-relaxed mb-3 max-w-lg"
              style={{ color: 'rgba(255,255,255,0.55)' }}>
-            Luxury meets innovation. Boca EV crafts premium electric carts
-            <br />
-            with cutting-edge technology and timeless design.
+            Luxury meets innovation. Boca EV crafts premium electric carts with cutting-edge technology and timeless design.
           </p>
 
           <p className="animate-fade-up delay-200 text-[15px] font-medium uppercase tracking-[0.2em] mb-10"
