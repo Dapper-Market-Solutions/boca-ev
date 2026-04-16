@@ -384,7 +384,7 @@ export default function Home() {
 
           <p className="animate-fade-up delay-200 text-[15px] font-medium uppercase tracking-[0.2em] mb-10"
              style={{ color: silver }}>
-            7 Models &mdash; 4 &amp; 6 Seat Configurations
+            7 Models &mdash; 4 &amp; 6 Seat &mdash; Lowered &amp; Lifted
           </p>
 
           <div className="animate-fade-up delay-300 flex flex-wrap gap-4 mb-16">
