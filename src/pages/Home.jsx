@@ -407,19 +407,6 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Trust stats */}
-          <div className="animate-fade-up delay-400 flex flex-wrap gap-12">
-            {[
-              ['48V 5KW', 'AC Motor'],
-              ['40-Mile', 'Range'],
-              ['10.1"', 'Touchscreen'],
-            ].map(([val, label]) => (
-              <div key={label}>
-                <div className="text-2xl sm:text-3xl font-bold tracking-tight" style={{ fontFamily: '"Outfit", sans-serif', color: '#fff' }}>{val}</div>
-                <div className="text-[14px] uppercase tracking-[0.2em] mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>{label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
