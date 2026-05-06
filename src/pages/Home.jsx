@@ -11,6 +11,7 @@ const MODELS = [
     seats: 4,
     category: '4-Seat',
     image: 'placeholder',
+    sellSheet: '/sellsheets/purebred-lowered-sell-sheet.pdf',
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -38,6 +39,7 @@ const MODELS = [
     seats: 4,
     category: '4-Seat',
     image: 'placeholder',
+    sellSheet: '/sellsheets/purebred-lifted-sell-sheet.pdf',
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -65,6 +67,7 @@ const MODELS = [
     seats: 6,
     category: '6-Seat',
     image: 'placeholder',
+    sellSheet: '/sellsheets/stallion-lowered-sell-sheet.pdf',
     colors: ['White', 'Grey', 'Blue', 'Black', 'Orange', 'Red', 'Teal'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -92,6 +95,7 @@ const MODELS = [
     seats: 6,
     category: '6-Seat',
     image: '/images/stallion-black.jpg',
+    sellSheet: '/sellsheets/stallion-lifted-sell-sheet.pdf',
     colorImages: {
       White: '/images/stallion-white.jpg',
       Grey: '/images/stallion-grey.jpg',
@@ -128,6 +132,7 @@ const MODELS = [
     seats: 4,
     category: '4-Seat',
     image: 'placeholder',
+    sellSheet: '/sellsheets/colt-lowered-sell-sheet.pdf',
     colors: ['White Gloss', 'Timeless Grey', 'Bright Blue', 'Black Gloss', 'Rich Green', 'Ferrari Red', 'Dark Blue', 'Deep Orange', 'Purple', 'Bright Teal', 'Candy Apple'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -155,6 +160,7 @@ const MODELS = [
     seats: 4,
     category: '4-Seat',
     image: 'placeholder',
+    sellSheet: '/sellsheets/colt-lifted-sell-sheet.pdf',
     colors: ['White Gloss', 'Timeless Grey', 'Bright Blue', 'Black Gloss', 'Rich Green', 'Ferrari Red', 'Dark Blue', 'Deep Orange', 'Purple', 'Bright Teal', 'Candy Apple'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -182,6 +188,7 @@ const MODELS = [
     seats: 4,
     category: 'Golf',
     image: 'placeholder',
+    sellSheet: '/sellsheets/mare-sell-sheet.pdf',
     colors: ['White'],
     battery: ['48V 105AH', '48V 150AH'],
     specs: {
@@ -585,14 +592,32 @@ export default function Home() {
                   </div>
 
                   {/* CTA */}
-                  <button
-                    onClick={() => setSpecCart(model)}
-                    className="block w-full mt-auto py-3 text-center text-[14px] font-semibold uppercase tracking-[0.2em] transition cursor-pointer"
-                    style={{ background: 'transparent', color: gold, border: `1px solid ${gold}` }}
-                    onMouseEnter={(e) => { e.target.style.background = gold; e.target.style.color = bg }}
-                    onMouseLeave={(e) => { e.target.style.background = 'transparent'; e.target.style.color = gold }}>
-                    View Full Specs
-                  </button>
+                  <div className="mt-auto">
+                    <button
+                      onClick={() => setSpecCart(model)}
+                      className="block w-full py-3 text-center text-[14px] font-semibold uppercase tracking-[0.2em] transition cursor-pointer"
+                      style={{ background: 'transparent', color: gold, border: `1px solid ${gold}` }}
+                      onMouseEnter={(e) => { e.target.style.background = gold; e.target.style.color = bg }}
+                      onMouseLeave={(e) => { e.target.style.background = 'transparent'; e.target.style.color = gold }}>
+                      View Full Specs
+                    </button>
+                    {model.sellSheet && (
+                      <a
+                        href={model.sellSheet}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 mt-3 text-[12px] uppercase tracking-[0.18em] transition-opacity opacity-70 hover:opacity-100"
+                        style={{ color: gold }}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                          <polyline points="7 10 12 15 17 10" />
+                          <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download Sell Sheet
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
